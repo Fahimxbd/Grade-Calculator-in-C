@@ -1,0 +1,139 @@
+/**
+ * Grade Calculator Program
+ * Author: [Your Name]
+ * Description: A simple program to calculate total marks, average, and grade
+ * for 5 subjects: Bangla, English, Math, Physics, and Chemistry
+ * 
+ * Grade Scale:
+ * A : 80% and above
+ * B : 60% - 79%
+ * C : 40% - 59%
+ * Fail: Below 40%
+ */
+
+#include <stdio.h>
+#include <math.h>
+
+// Function prototypes
+float calculate_sum(float subjects[], int count);
+float calculate_average(float sum, int count);
+char calculate_grade(float average);
+void display_results(float subjects[], int count, float sum, float average, char grade);
+
+int main() {
+    // Array to store marks of 5 subjects
+    float subjects[5];
+    char *subject_names[] = {"Bangla", "English", "Math", "Physics", "Chemistry"};
+    int num_subjects = 5;
+    
+    printf("====================================\n");
+    printf("     GRADE CALCULATOR PROGRAM      \n");
+    printf("====================================\n\n");
+    
+    // Input marks for each subject
+    for(int i = 0; i < num_subjects; i++) {
+        printf("Enter the mark of %s: ", subject_names[i]);
+        scanf("%f", &subjects[i]);
+        
+        // Input validation
+        while(subjects[i] < 0 || subjects[i] > 100) {
+            printf("Invalid mark! Please enter between 0 and 100: ");
+            scanf("%f", &subjects[i]);
+        }
+    }
+    
+    // Calculate sum and average
+    float sum = calculate_sum(subjects, num_subjects);
+    float average = calculate_average(sum, num_subjects);
+    char grade = calculate_grade(average);
+    
+    // Display results
+    display_results(subjects, num_subjects, sum, average, grade);
+    
+    return 0;
+}
+
+/**
+ * Calculate sum of all subjects marks
+ * @param subjects Array of marks
+ * @param count Number of subjects
+ * @return Total sum
+ */
+float calculate_sum(float subjects[], int count) {
+    float total = 0;
+    for(int i = 0; i < count; i++) {
+        total += subjects[i];
+    }
+    return total;
+}
+
+/**
+ * Calculate average marks
+ * @param sum Total marks
+ * @param count Number of subjects
+ * @return Average marks
+ */
+float calculate_average(float sum, int count) {
+    return sum / count;
+}
+
+/**
+ * Determine grade based on average marks
+ * @param average Average marks
+ * @return Grade character (A, B, C, or F for Fail)
+ */
+char calculate_grade(float average) {
+    if(average >= 80) {
+        return 'A';
+    } else if(average >= 60) {
+        return 'B';
+    } else if(average >= 40) {
+        return 'C';
+    } else {
+        return 'F';
+    }
+}
+
+/**
+ * Display all results in formatted output
+ * @param subjects Array of marks
+ * @param count Number of subjects
+ * @param sum Total marks
+ * @param average Average marks
+ * @param grade Final grade
+ */
+void display_results(float subjects[], int count, float sum, float average, char grade) {
+    char *subject_names[] = {"Bangla", "English", "Math", "Physics", "Chemistry"};
+    
+    printf("\n====================================\n");
+    printf("           RESULTS                  \n");
+    printf("====================================\n");
+    
+    // Display individual subject marks
+    for(int i = 0; i < count; i++) {
+        printf("%-10s: %.2f\n", subject_names[i], subjects[i]);
+    }
+    
+    printf("------------------------------------\n");
+    printf("Total Marks    : %.2f\n", sum);
+    printf("Average Marks  : %.2f\n", average);
+    printf("Final Grade    : ");
+    
+    // Show full grade name
+    switch(grade) {
+        case 'A':
+            printf("A (Excellent)\n");
+            break;
+        case 'B':
+            printf("B (Good)\n");
+            break;
+        case 'C':
+            printf("C (Average)\n");
+            break;
+        case 'F':
+            printf("Fail (Need Improvement)\n");
+            break;
+    }
+    
+    printf("====================================\n");
+}
