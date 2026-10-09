@@ -16,4 +16,4 @@ jobs:
       - name: Build and smoke test C CLI
         run: |
           gcc -std=c11 -Wall -Wextra -Werror -pedantic grade_calculator.c -o grade-calculator
-          printf '3\n2\n80\n80\nn\n' | ./grade-calculator | grep '5.00 / 5.00'
+          printf '3\n2\n80\n80\n0\n' | ./grade-calculator | grep '5.00 / 5.00'
