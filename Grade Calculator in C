@@ -95,7 +95,6 @@ int main(void) {
     Subject subjects[MAX_SUBJECTS];
     int level, count, i, is_university, allow_optional, has_optional = 0, failed = 0;
     double points_sum = 0, credits_sum = 0, bonus = 0;
-    char prompt[100];
     double value;
 
     puts("\n================================================");
