@@ -4,7 +4,9 @@
 
 ## Live website
 
-**Deployment pending:** This repository is configured for Cloudflare Workers, but a Workers URL must be confirmed after the first successful deployment. Do not assume an unverified URL is live.
+**Cloudflare Workers website:** [**Open GradePoint BD →**](https://grade-calculator-in-c.fahimprivateuser-d8a.workers.dev/)
+
+Direct link: https://grade-calculator-in-c.fahimprivateuser-d8a.workers.dev/
 
 ## What it supports
 
