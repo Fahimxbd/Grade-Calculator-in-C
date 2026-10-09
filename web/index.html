@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081321">
+  <meta name="description" content="Calculate Bangladesh PSC, JSC, SSC, HSC, Dakhil and Alim GPA, plus Honours, Degree and Masters credit-weighted CGPA. Free, private and mobile friendly.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GradePoint BD — GPA & CGPA Calculator">
+  <meta property="og:description" content="Fast, free Bangladesh grade calculator: GPA 5.00 and university CGPA 4.00.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>GradePoint BD | GPA & CGPA Calculator</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <header class="site-header wrap">
+    <a href="/" class="brand" aria-label="GradePoint BD home">
+      <span class="brand-icon">G<span>.</span></span>
+      <span>GradePoint <strong>BD</strong></span>
+    </a>
+    <div class="header-right">
+      <span class="privacy-label"><span class="privacy-dot"></span>Private by design</span>
+      <button class="icon-button" type="button" id="theme-toggle" title="Change color theme" aria-label="Change color theme">☀</button>
+      <a class="nav-link" href="https://github.com/Fahimxbd/Grade-Calculator-in-C" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="main-title">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-line"></span> MADE FOR STUDENTS IN BANGLADESH</div>
+        <h1 id="main-title">Your grades.<br><span>Your next move.</span></h1>
+        <p class="hero-description">Calculate GPA and CGPA with confidence. From school board subjects to university credit hours, everything in one simple workspace.</p>
+        <div class="hero-pills">
+          <span>✓ GPA out of 5.00</span><span>✓ CGPA out of 4.00</span><span>✓ Works on mobile</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="visual-card visual-back"><span>GPA</span><strong>5.00</strong><small>Board scale</small></div>
+        <div class="visual-card visual-front"><span>CGPA</span><strong>3.75</strong><small>University scale</small></div>
+        <div class="visual-spark">✦</div>
+      </div>
+    </section>
+
+    <section class="calculator" id="calculator" aria-labelledby="calculator-title">
+      <div class="section-heading">
+        <div><div class="section-tag">01 / YOUR CALCULATOR</div><h2 id="calculator-title">Calculate your result</h2><p>Choose your education level, then enter your subject marks.</p></div>
+        <span class="free-pill">FREE · NO SIGN UP</span>
+      </div>
+
+      <div class="app-shell">
+        <div class="work-panel">
+          <div class="field-heading"><span class="step-number">1</span><div><h3>Education level</h3><p>Select your examination or program</p></div></div>
+          <div id="exam-picker" class="exam-picker" role="group" aria-label="Education level"></div>
+          <div id="stage-warning" class="stage-warning" hidden></div>
+
+          <div class="divider"></div>
+          <div class="field-heading second"><span class="step-number">2</span><div><h3 id="exam-heading">Subject marks</h3><p id="exam-help">Enter obtained and full marks</p></div></div>
+          <div class="table-caption"><span id="subject-count">0 subjects</span><span>Tap a field to edit</span></div>
+          <div id="subject-list" class="subject-list" aria-label="Subjects"></div>
+
+          <div class="toolbar">
+            <button type="button" id="add-subject" class="button button-secondary"><span>＋</span> Add subject</button>
+            <button type="button" id="load-example" class="text-button">Try example</button>
+            <button type="button" id="clear-marks" class="text-button">Reset</button>
+          </div>
+          <div class="hint-panel"><span class="hint-icon">ⓘ</span><p id="formula-note"></p></div>
+        </div>
+
+        <aside class="results-panel" aria-labelledby="results-title">
+          <div class="results-top"><span class="mini-eyebrow">LIVE RESULT PREVIEW</span><span class="live-dot"><span></span>Instant</span></div>
+          <div class="results-title" id="results-title">Your estimated result</div>
+          <div class="score-area">
+            <div id="value" class="score-value" aria-live="polite">—</div>
+            <div class="score-unit">/ <span id="max-value">5.00</span></div>
+            <div id="value-label" class="score-label">GRADE POINT AVERAGE</div>
+          </div>
+          <div id="result-status" class="result-status pending">Awaiting your marks</div>
+          <div class="result-message" id="grade-summary" role="status" aria-live="polite">Complete all subject marks to see your estimated result.</div>
+          <div class="result-stat-grid">
+            <div class="result-stat"><span id="result-percentage">—</span><small>Marks percentage</small></div>
+            <div class="result-stat"><span id="required-count">—</span><small id="required-label">Main subjects</small></div>
+            <div class="result-stat"><span id="result-extra">—</span><small id="result-extra-label">4th subject bonus</small></div>
+          </div>
+          <div class="result-breakdown-title">SUBJECT BREAKDOWN</div>
+          <div id="result-details" class="result-details"><p class="empty-result">Your subject grades will appear here.</p></div>
+          <div class="result-actions">
+            <button id="copy-result" type="button" class="button button-primary" disabled>Copy results <span>↗</span></button>
+            <button id="print-result" type="button" class="button button-outline" disabled>Print</button>
+          </div>
+          <p class="results-disclaimer">Estimates only. Your institution or examination board issues the official result.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="reference" id="grading-scale">
+      <div class="section-heading reference-heading"><div><div class="section-tag">02 / QUICK REFERENCE</div><h2>Know your grade scale</h2><p id="scale-type">Bangladesh school board · out of 5.00</p></div></div>
+      <div class="reference-card">
+        <table class="scale-table"><thead><tr><th>Marks (%)</th><th>Letter grade</th><th>Grade point</th></tr></thead><tbody id="grade-table-body"></tbody></table>
+        <p class="reference-notice" id="scale-notice"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap"><div><span class="brand-icon small">G<span>.</span></span><span>Made to make grading simpler.</span></div><span>Open source · No tracking · Not an official result portal</span></footer>
+  <noscript><p class="noscript">Enable JavaScript to use the calculator.</p></noscript>
+</body>
+</html>

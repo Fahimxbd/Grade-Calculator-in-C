@@ -1,0 +1,6 @@
+node_modules/
+.wrangler/
+dist/
+*.exe
+grade-calculator
+.DS_Store
